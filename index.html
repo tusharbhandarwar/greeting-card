@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -13,8 +14,7 @@
 }
 
 body{
-    height:100vh;
-    overflow:hidden;
+    min-height:100vh;
     font-family:Segoe UI, sans-serif;
     background:linear-gradient(135deg,#ff9a9e,#fad0c4);
     display:flex;
@@ -22,6 +22,7 @@ body{
     align-items:center;
     text-align:center;
     color:white;
+    overflow-x:hidden;
 }
 
 .container{
@@ -44,6 +45,11 @@ button{
     background:white;
     color:#ff4f81;
     font-weight:bold;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.05);
 }
 
 #message{
@@ -52,6 +58,31 @@ button{
     line-height:1.8;
     display:none;
     max-width:700px;
+}
+
+#popup{
+    display:none;
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    background:white;
+    color:#ff4f81;
+    padding:25px;
+    border-radius:20px;
+    font-size:24px;
+    font-weight:bold;
+    box-shadow:0 0 25px rgba(0,0,0,0.3);
+    z-index:9999;
+}
+
+#finalMessage{
+    display:none;
+    margin-top:30px;
+    font-size:1.5rem;
+    line-height:1.8;
+    max-width:700px;
+    animation:fadeIn 2s;
 }
 
 .balloon{
@@ -84,23 +115,65 @@ button{
         transform:translateY(120vh) rotate(720deg);
     }
 }
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
 </style>
+
 </head>
 
 <body>
 
 <div class="container">
-    <h1>🎂 Happy Birthday Rajnandini 🎂</h1>
 
-    <button onclick="startSurprise()">
-        Open Your Birthday Surprise 🎁
-    </button>
+```
+<h1>🎂 Happy Birthday Rajnandini 🎂</h1>
 
-    <div id="message"></div>
+<button onclick="startSurprise()">
+    Open Your Birthday Surprise 🎁
+</button>
+
+<div id="message"></div>
+
+<div id="popup">
+    🤔 Wait... Wait...
+    <br><br>
+    Did you really think that's all? 🎁
+</div>
+
+<div id="finalMessage">
+    🌟 Rajnandini 🌟
+    <br><br>
+    You are not just a colleague,
+    but a wonderful friend and a sister-like person.
+    <br><br>
+    Your kindness, positivity and support
+    make every workplace brighter.
+    <br><br>
+    May this birthday bring you happiness,
+    success, peace and countless beautiful memories.
+    <br><br>
+    Keep smiling and keep shining! ✨
+    <br><br>
+    🎂 Happy Birthday Once Again 🎂
+    <br><br>
+    💖 From Tushar 💖
+</div>
+```
+
 </div>
 
 <script>
 
+// Floating balloons
 for(let i=0;i<20;i++){
     let b=document.createElement("div");
     b.className="balloon";
@@ -145,6 +218,19 @@ function startSurprise(){
     },40);
 
     createConfetti();
+
+    // Popup after 10 seconds
+    setTimeout(() => {
+        document.getElementById("popup").style.display = "block";
+        createConfetti();
+    }, 10000);
+
+    // Final surprise after 15 seconds
+    setTimeout(() => {
+        document.getElementById("popup").style.display = "none";
+        document.getElementById("finalMessage").style.display = "block";
+        createConfetti();
+    }, 15000);
 }
 
 function createConfetti(){
