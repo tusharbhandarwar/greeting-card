@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>A Surprise For You</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(to right, #74ebd5, #9face6);
+            color: white;
+            margin-top: 100px;
+        }
+
+        h1 {
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { opacity: 0.6; }
+            to { opacity: 1; }
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        #message {
+            display: none;
+            margin-top: 30px;
+            font-size: 28px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🎁 A Special Surprise Awaits 🎁</h1>
+
+    <button onclick="showMessage()">
+        Click Me
+    </button>
+
+    <div id="message">
+        🌟 Wishing You Success, Happiness, and Good Health! 🌟
+        <br><br>
+        🚀 Keep Growing and Keep Smiling 🚀
+    </div>
+
+    <script>
+        function showMessage() {
+            document.getElementById("message").style.display = "block";
+        }
+    </script>
+
+</body>
+</html>
